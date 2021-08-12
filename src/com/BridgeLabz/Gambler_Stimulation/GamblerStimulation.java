@@ -2,20 +2,26 @@ package com.BridgeLabz.Gambler_Stimulation;
 
 public class GamblerStimulation 
 {
-	public static final int Stake=100;
-	public static final int Bet=1;
-	public static String WinOrLoss()
+	public static int Stake=100;
+	public static int Bet=1;
+	public static String WinOrLoss(int Bet)
 	{
-		double Random=Math.random();
-		if(Random>0.5)
+		double random=Math.random();
+		if(random>0.5)
+		{
+			Stake+=Bet;
 			return "Winning";
+		}
 		else
+		{
+			Stake-=Bet;
 			return "Lossing";
+		}
 	}
 	public static void main(String[] args)
 	{
-		String Result = WinOrLoss();
-		System.out.println("Gambler is "+Result);
+		String result = WinOrLoss(Bet);
+		System.out.println("Gambler is "+result+" "+Bet+" $");
 	}
 
 }
