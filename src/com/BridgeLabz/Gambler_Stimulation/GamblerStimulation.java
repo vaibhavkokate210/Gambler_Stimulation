@@ -4,29 +4,28 @@ public class GamblerStimulation
 {
 	public static int stake=100;
 	public static int bet=1;
-	public static String WinOrLoss(int bet)
+	public static int initStake=stake;
+	public static final double FIFTY_PERCENT_LOSS=initStake*0.5;
+	public static final double FIFTY_PERCENT_GAIN=initStake*1.5;
+	public static String WinOrLoss()
 	{
 		double random=Math.random();
 		if(random>0.5)
 		{
-			stake+=bet;
 			return "Winning";
 		}
 		else
 		{
-			stake-=bet;
 			return "Lossing";
 		}
 	}
-	public static void main(String[] args)
+	public static void ResignDay()
 	{
-		//String result = WinOrLoss(bet);
-		//System.out.println("Gambler is "+result+" "+bet+" $");
-		int initStake=stake;
-		while(stake>(initStake*0.5)&&stake<(initStake*1.5))
+	
+		while(stake>(FIFTY_PERCENT_LOSS)&&stake<(FIFTY_PERCENT_GAIN))
 		{
-			double random=Math.random();
-			if(random>0.5)
+			
+			if(WinOrLoss()=="Winning")
 			{
 				stake+=bet;
 			}
@@ -37,10 +36,14 @@ public class GamblerStimulation
 		}
 		if(stake>(initStake*0.5))
 		{
-			System.out.println("Gambler loss 50%");
+			System.out.println("Gambler loss 50% so resigning day");
 		}
 		else
-			System.out.println("Gambler gain 50%");
+			System.out.println("Gambler gain 50% so resigning day");
+	}
+	public static void main(String[] args)
+	{
+		ResignDay();
 	}
 
 }
