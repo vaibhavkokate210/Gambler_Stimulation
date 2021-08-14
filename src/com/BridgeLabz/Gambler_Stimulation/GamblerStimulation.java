@@ -5,6 +5,10 @@ public class GamblerStimulation
 	public static int stake=100;
 	public static int bet=1;
 	public static int totalAmount=0;
+	public static int max=0;
+	public static int min=0;
+	public static int luckyDay=0;
+	public static int unluckyDay=0;
 	
 	public static String WinOrLoss()
 	{
@@ -41,11 +45,21 @@ public class GamblerStimulation
 		{
 			int win=stake-initialStackOfDay;
 			System.out.println("Day "+i+" win = "+win);
+			if(max<win)
+			{
+				max=win;
+				luckyDay=i;
+			}
 		}
 		else
 		{
 			int loss=initialStackOfDay-stake;
 			System.out.println("Day "+i+" loss = "+loss);
+			if(min<loss)
+			{
+				min=loss;
+				unluckyDay=i;
+			}
 		}
 		
 	}
@@ -62,6 +76,9 @@ public class GamblerStimulation
 			System.out.println("Gambler win and total amount = " +stake);
 		else
 			System.out.println("Gambler loss and total amount ="+stake);
+		
+		System.out.println("Lucky Day = "+luckyDay+"  Amount win on that day ="+max);
+		System.out.println("Unlucky Day = "+unluckyDay+"  Amount loss on that day ="+min);
 	}
 
 }
