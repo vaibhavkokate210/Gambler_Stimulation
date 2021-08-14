@@ -72,13 +72,23 @@ public class GamblerStimulation
 	public static void main(String[] args)
 	{
 		DayAmountWinOrLoss();
-		if(stake>100)
-			System.out.println("Gambler win and total amount = " +stake);
-		else
-			System.out.println("Gambler loss and total amount ="+stake);
 		
 		System.out.println("Lucky Day = "+luckyDay+"  Amount win on that day ="+max);
 		System.out.println("Unlucky Day = "+unluckyDay+"  Amount loss on that day ="+min);
+		do
+		{
+		  if(stake>100)
+		   {
+			System.out.println("Gambler win and total amount = " +stake);
+		    System.out.println("Gambler has won so continue play !!!");
+		    DayAmountWinOrLoss();
+	    	}
+		  else
+		   {
+			System.out.println("Gambler loss and total amount ="+stake);
+	        System.out.println("Gambler has lost so playing stopped !!!");
+	        break;
+		  }
+		}while(true);
 	}
-
 }
